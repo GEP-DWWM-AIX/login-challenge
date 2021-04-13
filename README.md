@@ -34,13 +34,13 @@ See [Configuration Reference](https://cli.vuejs.org/config/).
 
 ### 2 scénarios possibles
 
-1. Succés de la requête : Redirection vers la page Home.
+1. Succès de la requête : Redirection vers la page Home.
 2. Echec de la requête : Affichage d'un message d'erreur.
 
 ### La requête HTTP vers le serveur 'http://localhost:90/gsb/user/...'
 
 Le bouton permettra d'envoyer une requête HTTP avec 'Authorization', prenant en paramètre le login + password.
-L'en-tête de la requête aura deux options:
+L'en-tête de la requête aura trois options:
 - Content-Type
 - Authorization
 
@@ -49,7 +49,11 @@ L'en-tête de la requête aura deux options:
 
 fetch(url, {
     method: 'GET',
-    Authorization: 'Basic donnéeCrypté'
+    headers:{
+        "Content-type": "Application/json",
+        "Authorization": 'Basic donnéeCrypté'
+    }
+    
 }).
 then((response) => {
     //si response.status = 401
@@ -70,5 +74,5 @@ window.btoa('aladin:sesameOuvreToi')
 // => données cryptées en base 64
 ```
 
-see['Doc pour Authorisation']('https://developer.mozilla.org/fr/docs/Web/HTTP/Headers/Authorization')
+See [Doc MDN pour l'Authorisation](https://developer.mozilla.org/fr/docs/Web/HTTP/Headers/Authorization)
 
